@@ -4,7 +4,7 @@
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 {{ __('Manage Categories') }}
             </h2>
-            <a href="#" class="font-bold py-4 px-6 bg-indigo-700 text-white rounded-full">
+            <a href="{{route('admin.categories.create')}}" class="font-bold py-4 px-6 bg-indigo-700 text-white rounded-full">
                 Add New
             </a>
         </div>
@@ -17,7 +17,7 @@
                 @forelse($categories as $category)
                 <div class="item-card flex flex-row justify-between items-center">
                     <div class="flex flex-row items-center gap-x-3">
-                        <img src="{{Storage::url($category->icon)}}">
+                        <img src="{{Storage::url($category->icon)}}" class="w-[90px] h-[90px] rounded-2xl object-cover">
                         <div class="flex flex-col">
                             <h3 class="text-indigo-950 text-xl font-bold">{{$category->name}}</h3>
                         </div>
