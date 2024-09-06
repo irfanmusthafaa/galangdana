@@ -33,6 +33,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/fundraisers', [FundraiserController::class, 'index'])->name('fundraisers.index');
 
         Route::resource('fundraising_withdrawals', FundraisingWithdrawalController::class)->middleware('role:owner|fundraiser');
+
         Route::post('/fundraising_withdrawals/request/{fundraising}', [FundraisingWithdrawalController::class, 'store'])->middleware('role:fundraiser')->name('fundraising_withdrawals.store');
 
         Route::resource('fundraising_phases', FundraisingPhaseController::class)->middleware('role:owner|fundraiser');
@@ -41,7 +42,9 @@ Route::middleware('auth')->group(function () {
         Route::resource('fundraisings', FundraisingController::class)->middleware('role:owner|fundraiser');
         Route::post('/fundraisings/active/{fundraising}', [FundraisingController::class, 'activate_fundraising'])->middleware('role:owner')->name('fundraising_phases.activate_fundraising');
 
-        Route::post('/fundraiser/apply', [DashboardController::class, 'apply_fundraiser'])->name('fundraising_phases.apply_fundraiser');
+        Route::post('/fundraiser/apply', [DashboardController::class, 'apply_fundraiser'])->name('fundraiser.apply');
+
+        Route::get('/my-withdrawals', [DashboardController::class, 'my_withdrawals'])->name('my-withdrawals');
     });
 });
 
