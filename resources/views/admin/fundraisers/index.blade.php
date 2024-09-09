@@ -89,7 +89,7 @@
                     </span> 
 
                     @elseif($fundraiserStatus == 'Active')
-                    <a href="" class="font-bold py-4 px-6 bg-green-700 text-white rounded-full">
+                    <a href="{{route('admin.fundraisings.create')}}" class="font-bold py-4 px-6 bg-green-700 text-white rounded-full">
                         Create a Fundraising
                     </a>
 
