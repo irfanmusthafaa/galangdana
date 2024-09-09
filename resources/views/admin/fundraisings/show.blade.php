@@ -23,10 +23,10 @@
                         <h3 class="text-indigo-950 text-xl font-bold">{{$fundraising->donaturs->count()}}</h3>
                     </div>
                     <div class="flex flex-row items-center gap-x-3">
-                        <a href="#" class="font-bold py-4 px-6 bg-indigo-700 text-white rounded-full">
+                        <a href="{{route('admin.fundraisings.edit', $fundraising)}}" class="font-bold py-4 px-6 bg-indigo-700 text-white rounded-full">
                             Edit
                         </a>
-                        <form action="#" method="POST">
+                        <form action="{{route('admin.fundraisings.destroy', $fundraising)}}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="font-bold py-4 px-6 bg-red-700 text-white rounded-full">
