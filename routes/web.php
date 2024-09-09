@@ -40,7 +40,7 @@ Route::middleware('auth')->group(function () {
         Route::post('/fundraising_phases/update/{fundraising}', [FundraisingPhaseController::class, 'store'])->middleware('role:fundraiser')->name('fundraising_phases.store');
 
         Route::resource('fundraisings', FundraisingController::class)->middleware('role:owner|fundraiser');
-        Route::post('/fundraisings/active/{fundraising}', [FundraisingController::class, 'activate_fundraising'])->middleware('role:owner')->name('fundraising_phases.activate_fundraising');
+        Route::post('/fundraisings/activate_fundraising/{fundraising}', [FundraisingController::class, 'activate_fundraising'])->middleware('role:owner')->name('fundraising.activate_fundraising');
 
         Route::post('/fundraiser/apply', [DashboardController::class, 'apply_fundraiser'])->name('fundraiser.apply');
 

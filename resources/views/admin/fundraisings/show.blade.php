@@ -10,6 +10,25 @@
     <div class="py-12">
         <div class="max-w-5xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-10 flex flex-col gap-y-5">
+
+                @if($fundraising->is_active)
+                    <span class="w-fit text-white bg-green-500 p-5 rounded-2xl">Fundrising telah aktif dan dapat menerima donasi</span>
+                 
+                @else
+                <div class="flex justify-between">
+                    <span class="w-fit text-white bg-red-500 p-5 rounded-2xl">Fundrising belum disetujui oleh super admin</span>
+                    @role('owner')
+                    <form action="{{route('admin.fundraising.activate_fundraising', $fundraising)}}" method="POST">
+                        @csrf
+                        <button type="submit" class="font-bold py-4 px-6 bg-indigo-700 text-white rounded-full">
+                            Approve
+                        </button>
+                    </form>
+                    @endrole
+                </div>
+                @endif
+                <hr>
+               
                 <div class="item-card flex flex-row gap-y-10 justify-between items-center">
                     <div class="flex flex-row items-center gap-x-3">
                         <img src="{{Storage::url($fundraising->thumbnail)}}" alt="" class="rounded-2xl object-cover w-[200px] h-[150px]">
