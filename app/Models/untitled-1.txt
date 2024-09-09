@@ -1,0 +1,9 @@
+$donatur = new App\Models\Donatur();
+$donatur->total_amount = 1000000;
+$donatur->name = "Mira Maryana";
+$donatur->phone_number = "089888889999";
+$donatur->fundraising_id = 3;
+$donatur->notes = "Semoga sehat selalu"
+$donatur->proof = "proofs\buktitrx.png";
+$donatur->is_paid= false;
+$donatur->save();
