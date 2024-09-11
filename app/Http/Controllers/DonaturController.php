@@ -13,6 +13,8 @@ class DonaturController extends Controller
     public function index()
     {
         //
+        $donaturs = Donatur::with(['fundraising'])->orderByDesc('id')->paginate(10);
+        return view('admin.donaturs.index', compact('donaturs'));
     }
 
     /**
