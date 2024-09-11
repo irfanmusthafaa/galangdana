@@ -72,11 +72,11 @@
 
                 
                 @if($goalReached === true)
+                @if(!$hasRequestDrawal)
                 <hr class="my-5">
                 <h3 class="text-indigo-950 text-2xl font-bold">Withdraw Donations</h3>
-                <form method="POST" action="#" enctype="multipart/form-data">
+                <form method="POST" action="{{route('admin.fundraising_withdrawals.store', $fundraising)}}" enctype="multipart/form-data">
                     @csrf
-
                     <div>
                         <x-input-label for="bank_name" :value="__('bank_name')" />
                         <x-text-input id="bank_name" class="block mt-1 w-full" type="text" name="bank_name" :value="old('bank_name')" required autofocus autocomplete="bank_name" />
@@ -102,6 +102,7 @@
                         </button>
                     </div>
                 </form>
+                @endif
                 @endif
 
                 <hr class="my-5">

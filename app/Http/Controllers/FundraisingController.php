@@ -94,12 +94,15 @@ class FundraisingController extends Controller
     {
         $totalDonations = $fundraising->totalReachedAmount();
         $goalReached = $totalDonations >=  $fundraising->target_amount;
+
+        $hasRequestDrawal = $fundraising->withDrawals()->exists();
+
         $percentage = ($totalDonations / $fundraising->target_amount) * 100;
         if ($percentage > 100) {
             $percentage = 100;
         }
 
-        return view('admin.fundraisings.show', compact('fundraising', 'goalReached', 'percentage', 'totalDonations'));
+        return view('admin.fundraisings.show', compact('fundraising', 'goalReached', 'percentage', 'totalDonations', 'hasRequestDrawal'));
     }
 
     /**
