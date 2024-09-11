@@ -36,13 +36,9 @@
                     </span>    
                     @endif         
                     <div class="hidden md:flex flex-row items-center gap-x-3">
-                        <form action="#" method="POST">
-                            @csrf
-                            @method('PUT')
-                            <button type="submit" class="font-bold py-4 px-6 bg-indigo-700 text-white rounded-full">
+                            <a  href="{{route('admin.donaturs.show', $donatur)}}" class="font-bold py-4 px-6 bg-indigo-700 text-white rounded-full">
                                 View Details
-                            </button>
-                        </form>
+                            </a>
                     </div>
                 </div>
                 @empty 
