@@ -48,7 +48,7 @@
                 </span> 
                 @endif
                     <div class="hidden md:flex flex-row items-center gap-x-3">
-                        <a href="#" class="font-bold py-4 px-6 bg-indigo-700 text-white rounded-full">
+                        <a href="{{route('admin.fundraising_withdrawals.show', $fundraisingWithdrawal)}}" class="font-bold py-4 px-6 bg-indigo-700 text-white rounded-full">
                             View Details
                         </a>
                     </div>
