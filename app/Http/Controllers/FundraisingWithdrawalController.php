@@ -18,6 +18,8 @@ class FundraisingWithdrawalController extends Controller
     public function index()
     {
         //
+        $fundraisingWithdrawals = FundraisingWithdrawal::orderByDesc('id')->get();
+        return view('admin.fundraising_withdrawals.index', compact('fundraisingWithdrawals'));
     }
 
     /**
