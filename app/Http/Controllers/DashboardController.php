@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Donatur;
 use App\Models\Fundraiser;
+use App\Models\Fundraising;
 use App\Models\FundraisingWithdrawal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -41,5 +44,34 @@ class DashboardController extends Controller
     {
 
         return view('admin.my_withdrawals.details', compact('fundraisingWithdrawal'));
+    }
+
+    public function index()
+    {
+
+        $user = Auth::user();
+
+        $fundraisingQuery = Fundraising::query();
+        $withdrawalsQuery = FundraisingWithdrawal::query();
+
+        if ($user->hasRole('fundraiser')) {
+            $fundraiserId = $user->fundraiser->id;
+
+            $fundraisingQuery->where('fundraiser_id', $fundraiserId);
+            $withdrawalsQuery->where('fundraiser_id', $fundraiserId);
+
+            $fundraisingIds = $fundraisingQuery->pluck('id');
+
+            $donaturs = Donatur::whereIn('fundraising_id', $fundraisingIds)->where('is_paid', true)->count();
+        } else {
+            $donaturs = Donatur::where('is_paid', true)->count();
+        }
+
+        $fundraisings = $fundraisingQuery->count();
+        $withdrawals = $withdrawalsQuery->count();
+        $categories = Category::count();
+        $fundraisers = Fundraiser::count();
+
+        return view('dashboard', compact('fundraisings', 'withdrawals', 'categories', 'fundraisers', 'donaturs'));
     }
 }
