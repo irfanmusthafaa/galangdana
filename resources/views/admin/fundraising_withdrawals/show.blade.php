@@ -30,7 +30,7 @@
                          DELIVERED
                         </span>
                         @else
-                        <span class="w-fit text-sm font-bold py-2 px-3 rounded-full bg-orange-500 text-white">
+                        <span class="w-fit text-sm font-bold py-2 px-3 rounded-full bg-indigo-500 text-white">
                         PROCESSING
                         </span> 
                         @endif
@@ -74,7 +74,7 @@
 
                 @if($fundraisingWithdrawal->has_sent)
                 <hr class="my-5">
-                <h3 class="text-indigo-950 text-xl font-bold mb-5">Already Proccessed</h3>
+                <h3 class="text-indigo-950 text-xl font-bold mb-5">Money Transferred Successfully</h3>
                 <img src="{{Storage::url($fundraisingWithdrawal->proof)}}" alt="proof" class="rounded-2xl object-cover w-[300px] h-[200px] mb-3">
                 @else
                 <hr class="my-5">

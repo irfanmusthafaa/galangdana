@@ -35,7 +35,7 @@
                          DELIVERED
                         </span>
                         @else
-                        <span class="w-fit text-sm font-bold py-2 px-3 rounded-full bg-orange-500 text-white">
+                        <span class="w-fit text-sm font-bold py-2 px-3 rounded-full bg-indigo-500 text-white">
                         PROCESSING
                         </span> 
                         @endif
