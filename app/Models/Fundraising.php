@@ -42,6 +42,16 @@ class Fundraising extends Model
         return $this->donaturs()->sum('total_amount');
     }
 
+    public function getPercentage()
+    {
+        $totalDonations = $this->totalReachedAmount();
+
+        if ($this->target_amount > 0) {
+            $percentage = ($totalDonations / $this->target_amount) * 100;
+            return $percentage > 100 ? 100 : $percentage;
+        }
+    }
+
     public function withDrawals()
     {
         return $this->hasMany(FundraisingWithdrawal::class);
