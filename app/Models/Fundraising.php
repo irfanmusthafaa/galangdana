@@ -37,6 +37,11 @@ class Fundraising extends Model
         return $this->hasMany(Donatur::class)->where('is_paid', 1);
     }
 
+    public function fundraising_phases()
+    {
+        return $this->hasMany(FundraisingPhase::class);
+    }
+
     public function totalReachedAmount()
     {
         return $this->donaturs()->sum('total_amount');
